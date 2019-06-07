@@ -21,6 +21,7 @@ def read_data():
     df = pd.read_csv("../data/merged_data.csv")
     df.fillna(0, inplace = True)
     df.drop(set(df[df["HIVdiagnoses"] == 0].index), axis=0, inplace=True)
+    df.drop(767, axis=0, inplace=True)
     cols = ["HIVdiagnoses", "HIVprevalence", "PLHIV", "Population"]
     X = pd.DataFrame(index=df["HIVdiagnoses"].index, columns=cols)
     for col in cols:
