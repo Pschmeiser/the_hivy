@@ -81,7 +81,7 @@ if __name__ == "__main__":
     #X["HIVpop/Pop"] = X["PLHIV"] / X["Population"]
     #X.drop("Population", axis=1, inplace=True)
     y = np.log(y)
-    X_train_full, X_holdout, y_train_full, y_holdout = train_test_split(X, y)
+    X_train_full, X_holdout, y_train_full, y_holdout = train_test_split(X, y, random_state=13)
     model = linear_model.Ridge(alpha = 0.05)
     fitted = model.fit(X_train_full, y_train_full)
     #visualizer = ResidualsPlot(fitted)
