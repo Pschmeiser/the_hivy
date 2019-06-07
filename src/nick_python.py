@@ -77,8 +77,8 @@ if __name__ == "__main__":
     hiv_data, X, y = read_data()
     X["Log_Population"] = np.log(X['Population'])
     #X["Log_HIVdiagnoses"] = np.log(X["HIVdiagnoses"])
-    X["HIVpop/Pop"] = X["PLHIV"] / X["Population"]
-    X.drop("Population", axis=1, inplace=True)
+    #X["HIVpop/Pop"] = X["PLHIV"] / X["Population"]
+    #X.drop("Population", axis=1, inplace=True)
     y = np.log(y)
     X_train_full, X_holdout, y_train_full, y_holdout = train_test_split(X, y)
     model = linear_model.Ridge(alpha = 0.05)
