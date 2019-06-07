@@ -14,6 +14,7 @@ import seaborn as sns
 import matplotlib
 import matplotlib.pyplot as plt
 
+
 sns.set(style="ticks")
 font = {'size'   : 12}
 matplotlib.rc('font', **font)
@@ -56,12 +57,13 @@ def plot_residuals(X_train, X_test, y_train, y_test):
               X_train[cols[idx]].max(), 
               'k', linestyle='dashed')
         ax.set_xlabel(cols[idx])
+        #ax.set_title(cols[idx])
         ax.set_ylabel('studentized residuals');
 
 def visualize_pred_residuals(X_train, X_test, y_train, y_test):
     model = linear_model.Ridge(alpha = 0.05)
     fitted = model.fit(X_train, y_train)
-    visualizer = ResidualsPlot(fitted)
+    visualizer = ResidualsPlot(fitted,size=(1080, 720)))
     pred = fitted.predict(X_test)
     r = stats.linregress(pred, y_test)
     print(r[2])

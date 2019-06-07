@@ -63,7 +63,7 @@ def plot_residuals(X_train, X_test, y_train, y_test):
 def visualize_pred_residuals(X_train, X_test, y_train, y_test):
     model = linear_model.Ridge(alpha = 0.05)
     fitted = model.fit(X_train, y_train)
-    visualizer = ResidualsPlot(fitted)
+    visualizer = ResidualsPlot(fitted,size=(1080, 720)))
     pred = fitted.predict(X_test)
     r = stats.linregress(pred, y_test)
     print(r[2])
