@@ -24,23 +24,14 @@ y = np.log(df['hivincidence'])
 X_train, X_test, y_train, y_test = ms.train_test_split(
         X, y, test_size =.25)
 
-
-
 model = lm.Lasso(alpha = .5,fit_intercept=True,tol=10)
 visualizer = ResidualsPlot(model)
 model.fit(X_train,y_train)
 
 
 pred = model.predict(X_train)
-
-
 r = sp.stats.linregress(pred,y_train)
-pred = model.predict(X_test)
-rt = sp.stats.linregress(pred,y_test)
-print(r[2])
-print(rt[2])
 
 visualizer.fit(X_train, y_train)
 visualizer.score(X_test, y_test)
 visualizer.poof()
-
