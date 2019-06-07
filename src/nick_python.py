@@ -18,7 +18,7 @@ sns.set(style="ticks")
 font = {'size'   : 12}
 matplotlib.rc('font', **font)
 def read_data():
-    df = pd.read_csv("data/merged_data.csv")
+    df = pd.read_csv("../data/merged_data.csv")
     df.fillna(0, inplace = True)
     df.drop(set(df[df["HIVdiagnoses"] == 0].index), axis=0, inplace=True)
     cols = ["HIVdiagnoses", "HIVprevalence", "PLHIV", "Population"]
