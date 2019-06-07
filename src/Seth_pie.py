@@ -15,7 +15,7 @@ from sklearn import model_selection as ms
 from sklearn import linear_model as lm
 from yellowbrick.regressor import ResidualsPlot
 
-df = pd.read_csv('data/merged_data.csv')
+df = pd.read_csv('../data/merged_data.csv')
 df.columns = [x.lower() for x in df.columns]
 df.drop(set(df[df["hivdiagnoses"] == 0].index), axis=0, inplace=True)
 X = df[['hivdiagnoses', 'hivprevalence', 'plhiv', 'population']]
@@ -35,3 +35,4 @@ r = sp.stats.linregress(pred,y_train)
 visualizer.fit(X_train, y_train)
 visualizer.score(X_test, y_test)
 visualizer.poof()
+
