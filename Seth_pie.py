@@ -26,7 +26,7 @@ X_train, X_test, y_train, y_test = ms.train_test_split(
 
 
 
-model = lm.Lasso(fit_intercept=True)
+model = lm.Lasso(alpha = .5,fit_intercept=True,tol=10)
 visualizer = ResidualsPlot(model)
 model.fit(X_train,y_train)
 
@@ -35,11 +35,12 @@ pred = model.predict(X_train)
 
 
 r = sp.stats.linregress(pred,y_train)
+pred = model.predict(X_test)
+rt = sp.stats.linregress(pred,y_test)
 print(r[2])
+print(rt[2])
 
 visualizer.fit(X_train, y_train)
 visualizer.score(X_test, y_test)
-visualizer.poof() 
-cvr = ms.cross_validate(model,X,y,cv=20,return_train_score=True)
-print('Training scores:',cvr['train_score'],'\n')
-print('Testing scores:',cvr['test_score'])
+visualizer.poof()
+
